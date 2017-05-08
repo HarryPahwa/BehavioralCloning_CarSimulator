@@ -1,13 +1,14 @@
+
 import csv
 import cv2
 import numpy as np
-from sift import process_image
+#from sift import process_image
 from PIL import Image
 
 epochs = 5
 images = []
 measurements = []
-with open('../data/driving_log.csv', 'r') as csvfile:
+with open('data/driving_log.csv', 'r') as csvfile:
     reader = csv.reader(csvfile)
 
     for row in reader:
@@ -19,14 +20,14 @@ with open('../data/driving_log.csv', 'r') as csvfile:
             steering_right = steering_center - correction
 
             # read in images from center, left and right cameras
-            path = '../data/IMG/' # fill in the path to your training IMG directory
-            img_center = process_image(np.asarray(Image.open(path + row[0])))
-            img_left = process_image(np.asarray(Image.open(path + row[1])))
-            img_right = process_image(np.asarray(Image.open(path + row[2])))
+            path = 'data/IMG/' # fill in the path to your training IMG directory
+            img_center = (np.asarray(Image.open(path + row[0].split('/')[-1])))
+            img_left = (np.asarray(Image.open(path + row[1].split('/')[-1])))
+            img_right = (np.asarray(Image.open(path + row[2].split('/')[-1])))
 
             # add images and angles to data set
-            images.extend(img_center, img_left, img_right)
-            measurements.extend(steering_center, steering_left, steering_right)
+            images.extend([img_center, img_left, img_right])
+            measurements.extend([steering_center, steering_left, steering_right])
 
 
 
@@ -51,7 +52,7 @@ X_train = np.array(augmented_images)
 y_train = np.array(augmented_measurements)
 
 
-from keras.models import Sequential, Models
+from keras.models import Sequential, Model
 from keras.layers import Flatten, Dense, Lambda
 from keras.layers import Convolution2D, Cropping2D
 from keras.layers.pooling import MaxPooling2D
