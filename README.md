@@ -129,7 +129,7 @@ To augment the data sat, I also flipped images and angles thinking that this wou
 ![alt text][image6]
 ![alt text][image7]
 
-After the collection process, I had 32000 number of data points. I then preprocessed this data by normalizing it and cropping it to cut out the useless information.
+After the collection process, I had 32000+ number of data points. I then preprocessed this data by normalizing it and cropping it to cut out the useless information. I did not need a generator in my code to process these images.
 
 I finally randomly shuffled the data set and put 20% of the data into a validation set. 
 
