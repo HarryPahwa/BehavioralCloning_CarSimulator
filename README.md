@@ -49,7 +49,7 @@ The model.py file contains the code for training and saving the convolution neur
 
 #### 1. An appropriate model architecture has been employed
 
-My model consists of a convolution neural network with 3x3 filter sizes and depths between 32 and 128 (model.py lines 18-24) 
+My model consists of a convolution neural network with 6 filters with 5x5 kernel sizes. 
 
 The model includes RELU layers to introduce nonlinearity, and the data is normalized in the model using a Keras lambda layer. 
 
@@ -76,9 +76,7 @@ My first step was to use a convolution neural network model similar to the LeNet
 
 In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set (80-20 split). I found that my first model had a low mean squared error on the training set but a high mean squared error on the validation set. This implied that the model was overfitting. 
 
-To combat the overfitting, I modified the model so that ...
-
-Then I ... 
+To combat the overfitting, I modified the model so that it was cropping out 50 pixels from the top and 20 from the bottom. This removed any useless information from the model's training. Then I normalized the image.
 
 The final step was to run the simulator to see how well the car was driving around track one. Since, I had spent a meticulous time collecting the training data, there were no spots where the vehicle drove off the track and actually recovered well when it was about to drift off (see run1.mp4). 
 
@@ -86,7 +84,25 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 
 #### 2. Final Model Architecture
 
-The final model architecture (model.py lines 18-24) consisted of a convolution neural network with the following layers and layer sizes ...
+The final model architecture consisted of a convolution neural network with the following layers and layer sizes ...
+
+
+| Layer         		|     Description	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| Input         		| 160x320x3 RGB image   			| 
+| Cropping2D     	| 50 rows pixels from the top of the image, 20 rows pixels from the bottom of the image 	|
+| Lambda | Normalizing the image |
+| Convolution 5x5	    |  Valid padding|
+| RELU					|												|
+| Max pooling	      	| 2x2 stride, Valid padding		    |
+| Convolution 5x5	    |  Valid padding|
+| RELU					|												|
+| Max pooling	      	| 2x2 stride, Valid padding		    |
+| Flatten	        	| 				                    |
+| Fully connected		| Outputs 120        							|
+| Fully connected		| Outputs 84        							|
+| Fully connected		| Outputs 1 (Regression)      				|
+
 
 #### 3. Creation of the Training Set & Training Process
 
