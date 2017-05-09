@@ -41,6 +41,7 @@ with open('data/driving_log.csv', 'r') as csvfile:
 #         measurement = float(line[3])
 #         measurements.append(measurement)
 
+# Following code flips the images and basically doubles the sample size
 augmented_images, augmented_measurements = [], []
 for image, measurement in zip(images, measurements):
     augmented_images.append(image)
