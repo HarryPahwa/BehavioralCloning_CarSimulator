@@ -12,13 +12,15 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/placeholder.png "Model Visualization"
-[image2]: ./examples/placeholder.png "Grayscaling"
-[image3]: ./examples/placeholder_small.png "Recovery Image"
-[image4]: ./examples/placeholder_small.png "Recovery Image"
-[image5]: ./examples/placeholder_small.png "Recovery Image"
-[image6]: ./examples/placeholder_small.png "Normal Image"
-[image7]: ./examples/placeholder_small.png "Flipped Image"
+[image1]: ./images/crop.png "Cropped image"
+[image2]: ./images/center1.jpg "Center cam"
+[image2b]: ./images/left1.jpg "Left cam"
+[image2c]: ./images/right1.jpg "Right cam"
+[image3]: ./images/save1.jpg "Recovery Image"
+[image4]: ./images/save2.jpg "Recovery Image"
+[image5]: ./images/save3.jpg "Recovery Image"
+[image6]: ./images/flip1.jpg "Normal Image"
+[image7]: ./images/flip2.jpg "Flipped Image"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
@@ -78,6 +80,8 @@ In order to gauge how well the model was working, I split my image and steering 
 
 To combat the overfitting, I modified the model so that it was cropping out 50 pixels from the top and 20 from the bottom. This removed any useless information from the model's training. Then I normalized the image.
 
+![alt text][image1]
+
 The final step was to run the simulator to see how well the car was driving around track one. Since, I had spent a meticulous time collecting the training data, there were no spots where the vehicle drove off the track and actually recovered well when it was about to drift off (see run1.mp4). 
 
 At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
@@ -109,6 +113,8 @@ The final model architecture consisted of a convolution neural network with the 
 To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
 
 ![alt text][image2]
+![alt text][image2b]
+![alt text][image2c]
 
 I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to come back to the center if it drifted off course. These images show what a recovery looks like... :
 
